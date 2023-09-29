@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SachOnline.Models.SACH>
+<style type="text/css">
+    .imgsachbannhieu {
+        transition: all ease 0.5s;
+        width: 100px;
+    }
+
+        .imgsachbannhieu:hover {
+            transform: scale(1.2);
+        }
+
+    .media-left {
+        overflow: hidden;
+    }
+
+    .mota {
+        line-height: 24px;
+        height: 72px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .linkhover {
+        color: red;
+        text-decoration: none;
+    }
+</style>
+<h2 class="text-center">SÁCH BÁN NHIỀU</h2>
+<hr />
+<div class="row">
+    @foreach (var sach in Model)
+    {
+        <div class="col-lg-6 col-md-6">
+            <div class="media-object-default">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object imgsachbannhieu" src="~/Image/@sach.AnhBia" alt="placeholder image">
+                        </a>
+                        <br />
+                    </div>
+                    <div class="media-body">
+                        <h4 style="min-height:70px;">
+                            <a href="@Url.Action("Sachbannhieu", "SachOnline", new { id = sach.MaSach })" class="linkhover">@sach.TenSach</a>
+                            <p class="mota">Mô tả: @sach.MoTa</p>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<!-- row-->
+<hr>
